@@ -1,0 +1,21 @@
+<!-- Simple app that lets the user input a PDF file and then use a button mapped to a JavaScript function to convert the PDF to HTML. -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PDF to HTML</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<h1>PDF to HTML</h1>
+		<form id="pdf-form" method="post" enctype="multipart/form-data">
+			<input type="file" name="pdf" id="pdf" accept=".pdf">
+			<button type="submit">Convert</button>
+		</form>
+		<input type="checkbox" id="multiple-pages" checked>
+		<label for="multiple-tabs">Open Multiple Tabs</label>
+		<button id="try-again">Try Again</button>
+		<div id="download-buttons"></div>
+	</div>
+	<script src="script.js"></script>
+</html>

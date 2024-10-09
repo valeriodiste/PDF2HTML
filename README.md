@@ -1,4 +1,4 @@
-A simple utility that converts a PDF file into an HTML file using a remote custom made Python Flask server endpoint.
+A simple HTML+JS utility that converts a PDF file into an HTML file using a remote custom made Python Flask server endpoint.
 
 Once converted, the resulting HTML file (or the chunks of 10 pages of the HTML file) will be opened in new browser tabs.
 

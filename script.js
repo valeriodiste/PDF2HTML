@@ -22,6 +22,8 @@ function uploadPDF() {
 	let apiURL = "https://panecaldoaldo.pythonanywhere.com/pdf2html";
 	let pdfForm = document.getElementById("pdf-form");
 	let pdfFile = pdfForm.elements["pdf"].files[0];
+	let debugText = document.getElementById("debug-text");
+	debugText.innerHTML = "Uploading PDF file: " + pdfFile.name + "...";
 	console.log("Uploading PDF file: " + pdfFile.name + "...");
 	let formData = new FormData();
 	formData.append("pdf", pdfFile);
@@ -35,6 +37,7 @@ function uploadPDF() {
 		.then(data => {
 			console.log("Received response from server:");
 			console.log(data);
+			debugText.innerHTML = "Received response from server!";
 			// Open a blank window with the PDF HTML content
 			let htmlDocumentsStringList = data["html_documents"];	// List of strings representing chunks of 10 pages each for the PDF
 			htmlParts = htmlDocumentsStringList;

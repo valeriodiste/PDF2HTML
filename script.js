@@ -19,12 +19,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Function that takes as input a PDF file inputted by the user in the #pdf-form form and sends a POST request to the server with the PDF file as a FormData object
 function uploadPDF() {
-	let apiURL = "https://panecaldoaldo.pythonanywhere.com/pdf2html";
-	let pdfForm = document.getElementById("pdf-form");
-	let pdfFile = pdfForm.elements["pdf"].files[0];
+	let simpleConversion = document.getElementById("simple-conversion").checked;
 	let debugText = document.getElementById("debug-text");
+	let apiURL = "https://panecaldoaldo.pythonanywhere.com/pdf2html" + (simpleConversion ? "?simple=true" : "?simple=false");
+	console.log("API URL: " + apiURL);
+	let pdfForm = document.getElementById("pdf-form");
+	if (pdfForm.elements["pdf"].files.length === 0) {
+		console.log("No PDF file selected!");
+		debugText.innerHTML = "No PDF file selected!";
+		return;
+	}
+	let pdfFile = pdfForm.elements["pdf"].files[0];
+	console.log("Uploading PDF file:\n" + pdfFile.name + "...");
 	debugText.innerHTML = "Uploading PDF file: " + pdfFile.name + "...";
-	console.log("Uploading PDF file: " + pdfFile.name + "...");
 	let formData = new FormData();
 	formData.append("pdf", pdfFile);
 	fetch(
@@ -90,7 +97,7 @@ function redirectToHTMLPages() {
 			// Convert "'s to &quot; to avoid breaking the iframe
 			// htmlParts[i] = htmlParts[i].replace(/"/g, "&quot;").replace(/'/g, "&quot;");
 			// htmlParts[i] = htmlParts[i].replace(/'/g, "&quot;");
-			htmlParts[i] = htmlParts[i].replace(/"/g, "&quot;").replace(/'/g, "&quot;");
+			// htmlParts[i] = htmlParts[i].replace(/"/g, "&quot;").replace(/'/g, "&quot;");
 			htmlContent += "<iframe width='100vw' height='100vh' style='border: none;' scrolling='yes' src='data:text/html;charset=utf-8," + encodeURIComponent(htmlParts[i]) + "'></iframe>";
 			// htmlContent += "<iframe width='100vw' height='100vh' style='border: none;' scrolling='yes' srcdoc=" + htmlParts[i] + "'></iframe>";
 		}

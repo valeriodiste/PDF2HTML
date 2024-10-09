@@ -7,15 +7,33 @@
 </head>
 <body>
 	<div class="container">
-		<h1>PDF to HTML</h1>
-		<form id="pdf-form" method="post" enctype="multipart/form-data">
-			<input type="file" name="pdf" id="pdf" accept=".pdf">
-			<button type="submit">Convert</button>
-		</form>
-		<input type="checkbox" id="multiple-tabs" checked>
-		<label for="multiple-tabs">Open Multiple Tabs</label>
-		<button id="try-again">Try Again</button>
+		<div>
+			<h1>PDF to HTML</h1>
+		</div>
+		<!-- Form to upload a PDF file -->
+		 <div>
+			 <form id="pdf-form" method="post" enctype="multipart/form-data">
+				 <input type="file" name="pdf" id="pdf" accept=".pdf">
+				 <button type="submit">Convert</button>
+			</form>
+		</div>
+		<div>
+			 <!-- Checkbox to choose wheter to use a simple conversion method or not -->
+			 <div>
+				 <input type="checkbox" id="simple-conversion" checked>
+				 <label for="simple-conversion">Simplified Conversion</label>
+			</div>
+			<!-- Checkbox to open results in multiple tabs -->
+			<div>
+				<input type="checkbox" id="multiple-tabs" checked>
+				<label for="multiple-tabs">Open Multiple Tabs</label>
+			</div>
+			<!-- Button to open pages again -->
+			<button id="try-again">Open Again</button>
+		</div>
+		<!-- Text to show the debug information -->
 		<div id="debug-text"></div>
+		<!-- Container for download buttons -->
 		<div id="download-buttons"></div>
 	</div>
 	<script src="script.js"></script>
